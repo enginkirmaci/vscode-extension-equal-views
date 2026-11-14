@@ -128,7 +128,7 @@ function status(file) {
     exists: true,
     patched: isPatched(content),
     backup: fs.existsSync(backupPath(file)),
-    bytes: content.length
+    bytes: Buffer.byteLength(content)
   };
 }
 
