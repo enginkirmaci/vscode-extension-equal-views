@@ -1,0 +1,76 @@
+{
+  "name": "equal-views",
+  "displayName": "Equal Views",
+  "description": "Keeps the open views of the side bar (Explorer, Source Control, Outline, Timeline...) equally sized, without dragging splitters.",
+  "version": "0.1.0",
+  "publisher": "enginkirmaci",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "layout",
+    "sidebar",
+    "views",
+    "resize",
+    "split"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./src/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "equalViews.enable",
+        "title": "Enable",
+        "category": "Equal Views"
+      },
+      {
+        "command": "equalViews.disable",
+        "title": "Disable and Restore",
+        "category": "Equal Views"
+      },
+      {
+        "command": "equalViews.status",
+        "title": "Show Status",
+        "category": "Equal Views"
+      }
+    ],
+    "configuration": {
+      "title": "Equal Views",
+      "properties": {
+        "equalViews.targets": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "sidebar",
+              "secondarySideBar",
+              "panel"
+            ]
+          },
+          "default": [
+            "sidebar"
+          ],
+          "markdownDescription": "Regions whose open views are kept equally sized. Applied by the workbench side-car, so a change takes effect after the next window reload."
+        },
+        "equalViews.autoRepatch": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Re-apply the workbench side-car automatically when an update replaced `workbench.desktop.main.js`."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "test": "node --test test/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/enginkirmaci/vscode-extension-equal-views.git"
+  }
+}
